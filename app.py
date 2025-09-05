@@ -54,37 +54,49 @@ def cats_vs_dogs_classifier():
                 else:
                     st.subheader("It's A Cat")
 
-@st.cache_resource
-def load_food_101_model():
-    """
-    Loads the Food-101 model from Hugging Face Hub only once.
-    This prevents the ValueError by loading in a clean state.
-    """
-    model_path = hf_hub_download(repo_id="Zainiiii/food_101", filename="best_model_101_v2.keras")
-    model = tf.keras.models.load_model(model_path)
-    return model
+
 
 
 def food_101_classifier():
 
-    from tensorflow.keras.models import Sequential
-    from tensorflow.keras.layers import Rescaling, GlobalAveragePooling2D, Dense, Dropout
-    from tensorflow.keras.regularizers import l2
+    from keras.models import Sequential
+    from keras.layers import Rescaling, GlobalAveragePooling2D, Dense, Dropout
+    from keras.regularizers import l2
 
-    base_model = tf.keras.applications.EfficientNetB0(
-    input_shape=(224, 224, 3),
-    include_top=False,
-    weights=None
-    )
+    def create_model_architecture():
+        base_model = tf.keras.applications.EfficientNetB0(
+            input_shape=(224, 224, 3),
+            include_top=False,
+            weights=None  # We use None because we will load our own trained weights
+        )
+        # Ensure the base_model is not trainable if it was frozen during training
+        base_model.trainable = False
 
-    model = Sequential([
-    Rescaling(1./255, input_shape=(224, 224, 3)),
-    base_model,
-    GlobalAveragePooling2D(),
-    Dense(128, activation='relu', kernel_regularizer=l2(0.001)),
-    Dropout(0.5),
-    Dense(101, activation='softmax')
-    ])
+        model = Sequential([
+            # Note: The Rescaling layer is part of the model, so we don't need to divide by 255.0 later
+            Rescaling(1./255, input_shape=(224, 224, 3)),
+            base_model,
+            GlobalAveragePooling2D(),
+            Dense(128, activation='relu', kernel_regularizer=l2(0.001)),
+            Dropout(0.5),
+            Dense(101, activation='softmax')
+        ])
+        return model
+
+    # --- Part 2: Load the Model and Weights Efficiently ---
+    # This function downloads the weights file and is cached so it only runs once.
+    @st.cache_data
+    def get_weights_path():
+        model_path = hf_hub_download(repo_id="Zainiiii/food_101", filename="best_model_101_v2.keras")
+        return model_path
+
+    # This function creates the architecture and loads the weights into it.
+    # It's cached as a resource to prevent rebuilding/reloading on every interaction.
+    @st.cache_resource
+    def load_complete_model():
+        model = create_model_architecture()
+        model.load_weights(get_weights_path())
+        return model
         
 
     class_labels = [
@@ -118,9 +130,10 @@ def food_101_classifier():
     st.header("Technical Details:")
     st.write("This model is also built upon a Convolutional Neural Network (CNN) architecture. Given the complexity of distinguishing between 101 classes, this project likely utilizes a technique called transfer learning. This involves using a powerful, pre-trained model (like EfficientNet or ResNet) as a foundation and fine-tuning it on the Food-101 dataset. This approach leverages existing knowledge to achieve high accuracy on a difficult task.")
 
-    model_path = hf_hub_download(repo_id="Zainiiii/food_101", filename="best_model_101_v3.keras")
-    model.load_weights(model_path)
+    # model_path = hf_hub_download(repo_id="Zainiiii/food_101", filename="best_model_101_v3.keras")
+    # model.load_weights(load_food_101_model())
     # model = tf.keras.models.load_model(model_path)
+    model = load_complete_model()
 
     st.subheader("Try It Out!")
 
@@ -197,7 +210,7 @@ def sentiment_analysis():
 
                 predicted_index = np.argmax(probabilities)
 
-                class_labels = ['SADNESS', 'ANGER', 'SUPPORT', 'HOPE', 'DISSAPOINMENT']
+                class_labels = ['SADNESS', 'ANGER', 'SUPPORT', 'HOPE', 'DISAPPOINTMENT']
 
                 final_prediction = class_labels[predicted_index]
 
@@ -225,8 +238,8 @@ def sentiment_analysis():
                     # st.write(f"Prediksi:  {final_prediction}")
                     # st.write(f"Keyakinan:  {probabilities[predicted_index]:.2%}")
 
-                elif final_prediction == 'DISSAPOINTMENT':
-                    st.badge("DISSAPOINTMENT", color="grey")
+                elif final_prediction == 'DISAPPOINTMENT':
+                    st.badge("DISAPPOINTMENT", color="grey")
                     st.write(f"Kalimat:  {input_text}")
                     # st.write(f"Prediksi:  {final_prediction}")
                     # st.write(f"Keyakinan:  {probabilities[predicted_index]:.2%}")
@@ -248,8 +261,4 @@ pages = {
 }
 
 pg = st.navigation(pages)
-
 pg.run()
-
-
-
