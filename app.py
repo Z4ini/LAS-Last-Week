@@ -65,89 +65,89 @@ def cats_vs_dogs_classifier():
 #     return model
 
 
-def food_101_classifier():
+# def food_101_classifier():
 
-    # from tensorflow.keras.models import Sequential
-    # from tensorflow.keras.layers import Rescaling, GlobalAveragePooling2D, Dense, Dropout
-    # from tensorflow.keras.regularizers import l2
+#     # from tensorflow.keras.models import Sequential
+#     # from tensorflow.keras.layers import Rescaling, GlobalAveragePooling2D, Dense, Dropout
+#     # from tensorflow.keras.regularizers import l2
 
-    # base_model = tf.keras.applications.EfficientNetB0(
-    # input_shape=(224, 224, 3),
-    # include_top=False,
-    # weights=None
-    # )
+#     # base_model = tf.keras.applications.EfficientNetB0(
+#     # input_shape=(224, 224, 3),
+#     # include_top=False,
+#     # weights=None
+#     # )
 
-    # model = Sequential([
-    # Rescaling(1./255, input_shape=(224, 224, 3)),
-    # base_model,
-    # GlobalAveragePooling2D(),
-    # Dense(128, activation='relu', kernel_regularizer=l2(0.001)),
-    # Dropout(0.5),
-    # Dense(101, activation='softmax')
-    # ])
+#     # model = Sequential([
+#     # Rescaling(1./255, input_shape=(224, 224, 3)),
+#     # base_model,
+#     # GlobalAveragePooling2D(),
+#     # Dense(128, activation='relu', kernel_regularizer=l2(0.001)),
+#     # Dropout(0.5),
+#     # Dense(101, activation='softmax')
+#     # ])
         
 
-    class_labels = [
-            'Apple pie', 'Baby back ribs', 'Baklava', 'Beef carpaccio', 'Beef tartare',
-            'Beet salad', 'Beignets', 'Bibimbap', 'Bread pudding', 'Breakfast burrito',
-            'Bruschetta', 'Caesar salad', 'Cannoli', 'Caprese salad', 'Carrot cake',
-            'Ceviche', 'Cheesecake', 'Cheese plate', 'Chicken curry', 'Chicken quesadilla',
-            'Chicken wings', 'Chocolate cake', 'Chocolate mousse', 'Churros', 'Clam chowder',
-            'Club sandwich', 'Crab cakes', 'Creme brulee', 'Croque madame', 'Cup cakes',
-            'Deviled eggs', 'Donuts', 'Dumplings', 'Edamame', 'Eggs benedict', 'Escargots',
-            'Falafel', 'Filet mignon', 'Fish and chips', 'Foie gras', 'French fries',
-            'French onion soup', 'French toast', 'Fried calamari', 'Fried rice',
-            'Frozen yogurt', 'Garlic bread', 'Gnocchi', 'Greek salad', 'Grilled cheese sandwich',
-            'Grilled salmon', 'Guacamole', 'Gyoza', 'Hamburger', 'Hot and sour soup',
-            'Hot dog', 'Huevos rancheros', 'Hummus', 'Ice cream', 'Lasagna', 'Lobster bisque',
-            'Lobster roll sandwich', 'Macaroni and cheese', 'Macarons', 'Miso soup',
-            'Mussels', 'Nachos', 'Omelette', 'Onion rings', 'Oysters', 'Pad thai', 'Paella',
-            'Pancakes', 'Panna cotta', 'Peking duck', 'Pho', 'Pizza', 'Pork chop', 'Poutine',
-            'Prime rib', 'Pulled pork sandwich', 'Ramen', 'Ravioli', 'Red velvet cake',
-            'Risotto', 'Samosa', 'Sashimi', 'Scallops', 'Seaweed salad', 'Shrimp and grits',
-            'Spaghetti bolognese', 'Spaghetti carbonara', 'Spring rolls', 'Steak',
-            'Strawberry shortcake', 'Sushi', 'Tacos', 'Takoyaki', 'Tiramisu', 'Tuna tartare',
-            'Waffles']
+#     class_labels = [
+#             'Apple pie', 'Baby back ribs', 'Baklava', 'Beef carpaccio', 'Beef tartare',
+#             'Beet salad', 'Beignets', 'Bibimbap', 'Bread pudding', 'Breakfast burrito',
+#             'Bruschetta', 'Caesar salad', 'Cannoli', 'Caprese salad', 'Carrot cake',
+#             'Ceviche', 'Cheesecake', 'Cheese plate', 'Chicken curry', 'Chicken quesadilla',
+#             'Chicken wings', 'Chocolate cake', 'Chocolate mousse', 'Churros', 'Clam chowder',
+#             'Club sandwich', 'Crab cakes', 'Creme brulee', 'Croque madame', 'Cup cakes',
+#             'Deviled eggs', 'Donuts', 'Dumplings', 'Edamame', 'Eggs benedict', 'Escargots',
+#             'Falafel', 'Filet mignon', 'Fish and chips', 'Foie gras', 'French fries',
+#             'French onion soup', 'French toast', 'Fried calamari', 'Fried rice',
+#             'Frozen yogurt', 'Garlic bread', 'Gnocchi', 'Greek salad', 'Grilled cheese sandwich',
+#             'Grilled salmon', 'Guacamole', 'Gyoza', 'Hamburger', 'Hot and sour soup',
+#             'Hot dog', 'Huevos rancheros', 'Hummus', 'Ice cream', 'Lasagna', 'Lobster bisque',
+#             'Lobster roll sandwich', 'Macaroni and cheese', 'Macarons', 'Miso soup',
+#             'Mussels', 'Nachos', 'Omelette', 'Onion rings', 'Oysters', 'Pad thai', 'Paella',
+#             'Pancakes', 'Panna cotta', 'Peking duck', 'Pho', 'Pizza', 'Pork chop', 'Poutine',
+#             'Prime rib', 'Pulled pork sandwich', 'Ramen', 'Ravioli', 'Red velvet cake',
+#             'Risotto', 'Samosa', 'Sashimi', 'Scallops', 'Seaweed salad', 'Shrimp and grits',
+#             'Spaghetti bolognese', 'Spaghetti carbonara', 'Spring rolls', 'Steak',
+#             'Strawberry shortcake', 'Sushi', 'Tacos', 'Takoyaki', 'Tiramisu', 'Tuna tartare',
+#             'Waffles']
 
-    st.title("Food-101 Classifier")
-    st.image("https://rp-cms.imgix.net/wp-content/uploads/AdobeStock_513646998-scaled.jpeg", caption="Food-101 Dataset")
-    st.header("Project Overview:")
-    st.write("Taking image classification to the next level, this model tackles a significantly more complex challenge: identifying 101 different types of food from a photograph. From sushi to cheesecake, this model demonstrates the ability to differentiate between a large number of closely related categories. This was the second project from Week 3, focusing on large-scale classification.")
+#     st.title("Food-101 Classifier")
+#     st.image("https://rp-cms.imgix.net/wp-content/uploads/AdobeStock_513646998-scaled.jpeg", caption="Food-101 Dataset")
+#     st.header("Project Overview:")
+#     st.write("Taking image classification to the next level, this model tackles a significantly more complex challenge: identifying 101 different types of food from a photograph. From sushi to cheesecake, this model demonstrates the ability to differentiate between a large number of closely related categories. This was the second project from Week 3, focusing on large-scale classification.")
     
     
-    st.header("Technical Details:")
-    st.write("This model is also built upon a Convolutional Neural Network (CNN) architecture. Given the complexity of distinguishing between 101 classes, this project likely utilizes a technique called transfer learning. This involves using a powerful, pre-trained model (like EfficientNet or ResNet) as a foundation and fine-tuning it on the Food-101 dataset. This approach leverages existing knowledge to achieve high accuracy on a difficult task.")
+#     st.header("Technical Details:")
+#     st.write("This model is also built upon a Convolutional Neural Network (CNN) architecture. Given the complexity of distinguishing between 101 classes, this project likely utilizes a technique called transfer learning. This involves using a powerful, pre-trained model (like EfficientNet or ResNet) as a foundation and fine-tuning it on the Food-101 dataset. This approach leverages existing knowledge to achieve high accuracy on a difficult task.")
 
-    model_path = hf_hub_download(repo_id="Zainiiii/food_101", filename="best_model_101_v3.keras")
-    # model.load_weights(model_path)
-    model = tf.keras.models.load_model(model_path)
+#     model_path = hf_hub_download(repo_id="Zainiiii/food_101", filename="best_model_101_v3.keras")
+#     # model.load_weights(model_path)
+#     model = tf.keras.models.load_model(model_path)
 
-    st.subheader("Try It Out!")
+#     st.subheader("Try It Out!")
 
-    uploaded_file = st.file_uploader("Upload Gambar...", type=["jpg", "jpeg", "png"])
+#     uploaded_file = st.file_uploader("Upload Gambar...", type=["jpg", "jpeg", "png"])
 
-    if uploaded_file is not None:
+#     if uploaded_file is not None:
 
-        if st.button("RUN"):
-            with st.spinner("Please wait, the model is predicting..."):
-                time.sleep(2)
+#         if st.button("RUN"):
+#             with st.spinner("Please wait, the model is predicting..."):
+#                 time.sleep(2)
 
-                image = Image.open(uploaded_file).convert('RGB')
-                st.image(image, caption='Uploaded Image.', use_container_width=True)
+#                 image = Image.open(uploaded_file).convert('RGB')
+#                 st.image(image, caption='Uploaded Image.', use_container_width=True)
 
-                img = image.resize((224, 224))
-                img = tf.keras.preprocessing.image.img_to_array(img)
-                img = img / 255.0
-                img = np.expand_dims(img, axis=0)
+#                 img = image.resize((224, 224))
+#                 img = tf.keras.preprocessing.image.img_to_array(img)
+#                 img = img / 255.0
+#                 img = np.expand_dims(img, axis=0)
 
-                prediction = model.predict(img)
-                predicted_class_index = np.argmax(prediction, axis=1)[0]
-                predicted_class_name = class_labels[predicted_class_index]
+#                 prediction = model.predict(img)
+#                 predicted_class_index = np.argmax(prediction, axis=1)[0]
+#                 predicted_class_name = class_labels[predicted_class_index]
 
-                confidence_score = np.max(prediction) * 100
+#                 confidence_score = np.max(prediction) * 100
 
-                st.success(f"Prediction: **{predicted_class_name}**")
-                st.info(f"Confidence: **{confidence_score:.2f}%**")
+#                 st.success(f"Prediction: **{predicted_class_name}**")
+#                 st.info(f"Confidence: **{confidence_score:.2f}%**")
 
 def sentiment_analysis():
     st.title("Sentiment Analysis")
@@ -248,4 +248,5 @@ pages = {
 }
 
 pg = st.navigation(pages)
+
 pg.run()
