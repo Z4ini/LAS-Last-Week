@@ -242,7 +242,7 @@ pages = {
     ],
     "Models": [
         st.Page(cats_vs_dogs_classifier, title="Cats vs Dogs", icon="🐾"),
-        # st.Page(food_101_classifier, title="Food-101", icon="🍔"),
+        st.Page(food_101_classifier, title="Food-101", icon="🍔"),
         st.Page(sentiment_analysis, title="Sentiment Analysis", icon="🤖"),
     ]
 }
@@ -250,5 +250,6 @@ pages = {
 pg = st.navigation(pages)
 
 pg.run()
+
 
 
