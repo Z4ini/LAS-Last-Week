@@ -251,14 +251,15 @@ def sentiment_analysis():
 
 pages = {
     "Home": [
-        st.Page(home, title="Welcome", icon="🏠", default=True)
+        st.Page(home, title="Welcome", default=True)
     ],
     "Models": [
-        st.Page(cats_vs_dogs_classifier, title="Cats vs Dogs", icon="🐾"),
-        st.Page(food_101_classifier, title="Food-101", icon="🍔"),
-        st.Page(sentiment_analysis, title="Sentiment Analysis", icon="🤖"),
+        st.Page(cats_vs_dogs_classifier, title="Cats vs Dogs"),
+        st.Page(food_101_classifier, title="Food-101"),
+        st.Page(sentiment_analysis, title="Sentiment Analysis"),
     ]
 }
 
 pg = st.navigation(pages)
 pg.run()
+
